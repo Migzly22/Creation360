@@ -1,0 +1,14 @@
+@import url(./Table.css);
+:root{
+    --color1: #CD4450;
+    --color2: #DAC7ad;
+    --color3: #a48f76;
+
+    --colorT1: #fff;
+    --colorT2: #000;
+}
+
+.headerbox{
+    background: var(--color1);
+    color: var(--colorT1);
+}

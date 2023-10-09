@@ -1,0 +1,354 @@
+
+
+*{
+    padding: 0;
+    margin: 0;
+}
+html,
+body{
+    position: relative;
+    width: 100%;
+}
+
+nav{
+    position: fixed;
+    top: 0;
+    max-height: 3em;
+    width: 98%;
+
+    background: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 1em 2em;
+    align-items: center;
+
+    z-index: 100;
+}
+a{
+    text-decoration: none;
+}
+ul{
+    list-style: none;
+}
+nav svg {
+    width: 1.5em;
+    height: 1.5em;
+}
+
+
+/* Style the dropdown container */
+.dropdown {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+/* Style the main menu items */
+.dropdown > li {
+    display: inline-block;
+    position: relative;
+    margin-right: 20px;
+    
+}
+
+/* Style the submenu */
+.submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #333;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-radius: 5px;
+
+    z-index: 100;
+}
+
+/* Style submenu items */
+.submenu li {
+    padding: 10px;
+    min-width: 200px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+}
+/* Show the submenu when hovering over the main menu item */
+.dropdown:hover .submenu {
+    display: block;
+}
+.submenu li:hover {
+    background-color: #9c9595;
+}
+.specialSMli{
+    color: white;
+    pointer-events: none;
+    border-bottom: 1px solid white;
+}
+.specialSMli p{
+    width: 100%;
+    text-align: center;
+
+}
+.submenu svg {
+    fill: #fff;
+    width: 1em;
+    height: 1em;
+}
+/* Style the links */
+.dropdown a {
+    text-decoration: none;
+    color: #fff;
+    fill: #fff;
+}
+
+
+main{
+    margin-top: 4em;
+    position: relative;
+}
+/*sidebar*/
+.sidebar{
+    min-width: 200px;
+    max-width: 250px;
+    min-height: 100dvh;
+
+    position: fixed;
+    overflow: hidden;
+    border-right: 2px solid grey;
+}
+.sidebar svg{
+    width: 1.3em;
+    height: 1.3em;
+}
+.sidebar ul  li{
+    color: black;
+    padding: 1em;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.5em;
+} 
+.sidebar ul li:hover {
+    background-color: #9c9595;
+    color: #fff;
+}
+.sidebar ul li:hover a,.sidebar ul li:hover svg{
+    color: #fff;
+    fill: #fff;
+}
+.sidebar ul  li a{
+    color: black;
+}
+
+.sidebar ul .LIACTIVATE{
+    background: #333;
+    pointer-events: none;
+}
+.sidebar ul .LIACTIVATE a,.sidebar ul .LIACTIVATE svg{
+    color: #fff;
+    fill: #fff;
+}
+
+/*mainbody*/
+.mainbody{
+    margin-left: 200px;
+    padding: 1.5em;
+}
+
+
+/*List of Class*/
+.classHeader{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+.classHeader button{
+    background: transparent;
+    border-radius: 10px;
+}
+.classHeader button svg{
+    width: 1.5em;
+    height: 1.5em;
+    padding: .5em;
+ 
+}
+.classListbox{
+    padding: 1.5em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1em;
+    row-gap: 1.3em;
+}
+.classListbox .box{
+    width: 200px;
+    padding: 1.5em;
+    border-radius: 2em;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    max-height: 150px;
+
+
+    position: relative;
+
+}
+.boxboxlimitt{
+    overflow: hidden;
+    text-align: justify;
+    height: 100%;
+}
+.box h3{
+    text-align: center;
+    padding-bottom: 1em;
+}
+
+.classListbox .box 
+.ClassCODEID{
+    position: absolute;
+    bottom: -15%;
+    left: 50%;
+    background: red;
+    padding: .5em;
+    translate: -50% -50%;
+
+    border: 1px solid black;
+    background: white;
+    border-radius: 10px;
+
+}
+.ClassCODEID code{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    align-items: center;
+    overflow: hidden;
+}
+
+/*manage user*/
+
+
+.stafflistbox{
+    padding: 1.5em;
+    
+}
+.box{
+    padding: 1.5em;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    min-height: 150px;
+
+
+    position: relative;
+
+}
+.box h2{
+    text-align: center;
+    padding-bottom: 1em;
+}
+.box .box2{
+    width: 100%;
+    max-height: 350px;
+    overflow: auto; 
+    position: relative;
+}
+.box2 .table thead th {
+    background-color: #f2f2f2; /* Optional: Add a background color for the header row */
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+/* Optional: Style the header row further */
+.box2 .table thead th {
+    text-align: left; /* Align text to the left in header cells */
+    padding: 10px; /* Add padding to header cells */
+}
+
+
+.ActionTABLE{
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+}
+.ActionTABLE button{
+    padding: .3em;
+    background: transparent;
+    
+    background: white;
+    border-radius: 5px;
+
+}
+
+
+
+/*Student reports*/
+
+.SRbox{
+    padding: 1.5em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1em;
+    row-gap: 1.3em;
+}
+.SRbox .box{
+    width: 200px;
+    padding: 1.5em;
+    border-radius: 2em;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    max-height: 50px;
+    position: relative;
+
+}
+
+
+.SRbox .box 
+.ClassCODEID{
+    position: absolute;
+    bottom: -30%;
+    left: 50%;
+    background: red;
+    padding: .5em;
+    translate: -50% -50%;
+
+    border: 1px solid black;
+    background: white;
+    border-radius: 10px;
+
+}
+
+
+/*BUTTONS DESIGN*/
+.addbtn{
+    fill: #28a745;
+    border: 1px solid #28a745;
+}
+.addbtn:hover{
+    fill: #fff;
+    border: 1px solid #fff;
+    background: #28a745;
+}
+.Editbtn{
+    fill: #007bff;
+    border: 1px solid #007bff;
+}
+.Editbtn:hover{
+    fill: #fff;
+    border: 1px solid #fff;
+    background: #007bff;
+}
+.Deletebtn{
+    fill: #dc3545;
+    border: 1px solid #dc3545;
+}
+.Deletebtn:hover{
+    fill: #fff;
+    border: 1px solid #fff;
+    background: #dc3545;
+}
+
+
