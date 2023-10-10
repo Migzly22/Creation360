@@ -20,7 +20,18 @@
                                 </thead>
                                 <tbody id="tbody">
 <?php
-    $sqlcode = "SELECT a.*, CONCAT(a.Lastname,', ', a.Firstname, ' ', a.Middlename ) AS studentname, b.* FROM studentinfos a LEFT JOIN users b ON a.usersID = b.ID ORDER BY StudentID;";
+
+    $sqlcode = ($_SESSION["ACCESS"] == "ADMIN") ?  
+        "SELECT a.*, CONCAT(a.Lastname,', ', a.Firstname, ' ', a.Middlename ) AS studentname, b.* FROM studentinfos a LEFT JOIN users b ON a.usersID = b.ID ORDER BY CONCAT(a.Lastname,', ', a.Firstname, ' ', a.Middlename );"
+        :
+        "SELECT e.*,CONCAT(c.Lastname,', ', c.Firstname, ' ', c.Middlename ) AS studentname, b.*, c.* FROM studentclassesenrolled a LEFT JOIN classes b ON b.ClassID = a.classID 
+        LEFT JOIN studentinfos c ON a.student_ID = c.StudentID
+        LEFT JOIN users e ON c.usersID = e.ID
+        LEFT JOIN staffinfos d ON d.StaffID = b.staffID
+        WHERE d.StaffID = '9' ORDER BY CONCAT(c.Lastname,', ', c.Firstname, ' ', c.Middlename );";
+
+
+    //$sqlcode = "SELECT a.*, CONCAT(a.Lastname,', ', a.Firstname, ' ', a.Middlename ) AS studentname, b.* FROM studentinfos a LEFT JOIN users b ON a.usersID = b.ID ORDER BY StudentID;";
     $queryrun = mysqli_query($conn,$sqlcode);
     $tabledata = "";
 

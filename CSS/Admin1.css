@@ -196,6 +196,13 @@ main{
     position: relative;
 
 }
+.classListbox .box:hover{
+    background: #9c9595;;
+    color:#fff;
+}
+.box code{
+    color: #333;
+}
 .boxboxlimitt{
     overflow: hidden;
     text-align: justify;
@@ -219,7 +226,15 @@ main{
     background: white;
     border-radius: 10px;
 
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1em;
+
+    z-index: 10;
 }
+
+
 .ClassCODEID code{
     display: flex;
     flex-wrap: wrap;
@@ -319,6 +334,30 @@ main{
     background: white;
     border-radius: 10px;
 
+}
+
+/*SETTINGS*/
+
+
+.SETTINGS table{
+    margin-top: 1em;
+}
+.SETTINGS table th{
+    text-align: start;
+}
+.SETTINGS .box{
+    padding: 1.5em;
+    border-radius: 2em;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+    margin-bottom: 2em;
+}
+
+.SETTINGS .box p{
+    font-style: italic;
+}
+.SETTINGS .ActionTABLE{
+    justify-content: end;
 }
 
 

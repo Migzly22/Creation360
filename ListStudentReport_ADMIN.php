@@ -6,7 +6,11 @@
                 <div class="SRbox">
 
 <?php
-    $sqlcode = "SELECT a.*, CONCAT(b.StaffLname,', ', b.StaffFname, ' ', b.StaffMname ) AS staffname FROM classes a LEFT JOIN staffinfos b ON a.staffID = b.StaffID ORDER BY a.ClassID DESC;";
+    $sqlcode = ($_SESSION["ACCESS"] == "ADMIN") ?  
+    "SELECT a.*, CONCAT(b.StaffLname,', ', b.StaffFname, ' ', b.StaffMname ) AS staffname FROM classes a LEFT JOIN staffinfos b ON a.staffID = b.StaffID ORDER BY a.ClassID DESC;"
+    :
+    "SELECT a.*, CONCAT(b.StaffLname,', ', b.StaffFname, ' ', b.StaffMname ) AS staffname FROM classes a LEFT JOIN staffinfos b ON a.staffID = b.StaffID WHERE b.StaffID = '".$_SESSION["STAFFID"]."' ORDER BY a.ClassID DESC;";
+
     $queryrun = mysqli_query($conn,$sqlcode);
     $divbox = "";
 
@@ -33,21 +37,7 @@
     echo $divbox;
 
 ?>
-                    <div class="box">
-                        <div class="boxboxlimitt">
-                            <h3>Title of the Subject</h3>
-                            <div class="ClassDescription">
-                                <p style='font-style:italic;'>
-                                    by : ".$result['staffname']."
-                                </p>
-                                <small>
-                                    ".$result['classDescription']."
-                                </small>
-                            </div>
-                        </div>
-
-                    </div>
-                   
+                  
                 </div>
                 
 
