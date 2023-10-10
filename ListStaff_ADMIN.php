@@ -16,22 +16,38 @@
                                 <tr>
                                     <th scope="col">Name</th>
                                     <th scope="col">Email</th>
+                                    <th scope="col" style="text-align: center;">Access</th>
                                     <th scope="col" style="text-align: center;">Action</th>
                                 </tr>
                             </thead>
                             <tbody id="tbody">
 <?php
-    $sqlcode = "SELECT a.ID, a.Email, CONCAT(b.StaffLname,', ', b.StaffFname, ' ', b.StaffMname ) AS staffname FROM users a
+    $sqlcode = "SELECT a.*, CONCAT(b.StaffLname,', ', b.StaffFname, ' ', b.StaffMname ) AS staffname FROM users a
                 RIGHT JOIN staffinfos b on a.ID = b.userID ORDER BY CONCAT(b.StaffLname,', ', b.StaffFname, ' ', b.StaffMname );";
 
     $queryrun = mysqli_query($conn,$sqlcode);
     $tableresult = "";
 
     while($result = mysqli_fetch_assoc($queryrun)){
+
+        $pick1 = "";
+        $pick2 = "";
+        if($result["Access"] == "STAFF"){
+            $pick2 = "selected";
+        }else{
+            $pick1 = "selected";
+        }
+
         $tableresult .="
                 <tr>
                     <td>".$result["staffname"]."</td>
                     <td>".$result["Email"]."</td>
+                    <td class='ACCESSTABLE'>
+                        <select name='' id='' onchange='CHANGINGACCESS(this,".$result["ID"] .")'>
+                            <option value='ADMIN' $pick1>ADMIN</option>
+                            <option value='STAFF' $pick2>STAFF</option>
+                        </select>
+                    </td>
                     <td class='ActionTABLE' id='".$result["ID"]."'>
                         <button class='Editbtn'>
                             <svg xmlns='http://www.w3.org/2000/svg' height='1em' viewBox='0 0 512 512'><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d='M362.7 19.3L314.3 67.7 444.3 197.7l48.4-48.4c25-25 25-65.5 0-90.5L453.3 19.3c-25-25-65.5-25-90.5 0zm-71 71L58.6 323.5c-10.4 10.4-18 23.3-22.2 37.4L1 481.2C-1.5 489.7 .8 498.8 7 505s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L421.7 220.3 291.7 90.3z'/></svg>
@@ -136,6 +152,31 @@
         
     }
     
+    async function CHANGINGACCESS(e, id) {
+        let sqlcode = `UPDATE users SET Access = '${e.value}' WHERE ID = '${id}';`
+        let targetname = e.parentNode.parentNode.cells[0].innerHTML
+        Swal.fire({
+            title: `Do you want to change the Access of user ${targetname}?`,
+            showDenyButton: true,
+            showCancelButton: false,
+            confirmButtonText: 'Yes',
+            denyButtonText: `No`,
+        }).then(async (result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+                let throwns = await AjaxSendv3(sqlcode,"ListStaffLogic","&State=Deletion")
+                tbody.innerHTML = throwns
+                Swal.fire(``, 'Updated Successfully', 'success')
+            }else{
+                for (const option of e.options) {
+                    if (!option.selected) {
+                        option.selected = true;
+                        break
+                    }
+                }
+            }
 
+        })
+    }
 
 </script>

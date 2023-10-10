@@ -298,6 +298,20 @@ main{
 
 }
 
+.ACCESSTABLE{
+    text-align: center;
+}
+.ACCESSTABLE select{
+    padding: .3em;
+    background: transparent;
+    
+    background: white;
+    border-radius: 5px;
+    border: 1px solid #28a745;
+
+}
+
+
 
 
 /*Student reports*/
@@ -360,8 +374,117 @@ main{
     justify-content: end;
 }
 
+/*Class_ITEM*/
+.Class_ITEM{
+    width: 100%;
+    height: 200px;
+
+    display: flex;
+    background-image: linear-gradient(to left bottom, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+    flex-direction: column; /* Change flex-direction to column */
+    justify-content: flex-end; /* Align items at the bottom */
+    border-radius: 20px;
+    overflow: hidden;
+
+    margin-bottom: 1.5em;
+}
+.CI_div1{
+    background: rgba(0, 0, 0, 0.278);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 1em 2em ;
+    color: #fff;
+}
+
+.Class_Mainbody{
+    padding: 1em;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    row-gap: 2em;
+}
+
+.Class_Mainbody .box{
+    align-content: center;
+    max-width: 500px;
+    border-radius: 20px;
+    padding: 1em;
+    margin: 0 auto;
+}
+.PCbox{
+    display: flex;
+    gap: 1em;
+    align-items: center;
+    
+}
+.PCbox svg{
+    width: 2em;
+    height: 2em;
+}
+.PCbox .Userinformations{
+    display: flex;
+    flex-direction: column;
+}
+.FileClickables{
+    margin: .5em;
+    padding: 1em;
+    /*border: 1px solid #9c9595;*/
+    border-radius: 20px ;
+    display: grid;
+    grid-template-columns:  repeat(auto-fit, minmax(150px, 1fr)); /* Change the columns property */
+    column-gap: 1em;
+    row-gap: 1em;
+}
+.FileClickables a{
+    display: flex;
+    gap: 1em;
+    color: #333;
+    padding: .5em;
+}
+.FileClickables a:hover{
+    box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
+}
+
+
+.CIMenu{
+    display: flex;
+    gap: 1em;
+    justify-content: end;
+    flex-wrap: wrap;
+    margin-bottom: .5em;
+}
+.classwork{
+    border: 2px solid transparent;
+    display: flex;
+    column-gap: .5em;
+    align-items: center;
+    background: transparent;
+}
+
+.classwork svg{
+    width: 1.5em;
+    height: 1.5em;
+    padding: .5em;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*BUTTONS DESIGN*/
+.classwork:hover{
+    border-bottom: 2px solid #333;
+}
 .addbtn{
     fill: #28a745;
     border: 1px solid #28a745;
@@ -389,5 +512,54 @@ main{
     border: 1px solid #fff;
     background: #dc3545;
 }
+
+
+/*Custom Dropdown*/
+.custom-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Style the submenu */
+.custom-dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #333;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-radius: 5px;
+
+    z-index: 100;
+    
+}
+
+/* Style submenu items */
+.custom-dropdown-menu li {
+    padding: 10px;
+    min-width: 150px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+}
+
+
+.custom-dropdown-menu a {
+    text-decoration: none;
+    color: #fff; /* Text color for dropdown items */
+    display: block;
+}
+.custom-dropdown-menu li:hover {
+    background-color: #9c9595;
+}
+.custom-dropdown:hover .custom-dropdown-menu {
+    display: block;
+}
+
+
+
+
 
 

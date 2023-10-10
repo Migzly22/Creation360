@@ -24,7 +24,7 @@
     
     while ($result = mysqli_fetch_assoc($queryrun)){
         $divbox .="
-            <div class='box' id='".$result['ClassID']."' >
+            <div class='box' id='".$result['ClassID']."' onclick='ShowClass(`".$result['ClassID']."`)'>
                 <div class='boxboxlimitt'>
                     <h3>".$result['classTitle']."</h3>
                     <div class='ClassDescription'>
@@ -36,7 +36,7 @@
                         </small>
                     </div>
                 </div>
-                <div class='ClassCODEID'>
+                <div class='ClassCODEID' onclick='event.stopPropagation()'>
                     <code>
                         ".$result['ClassID']."
                     </code>
@@ -92,6 +92,10 @@
         }else{
             SweetError();
         }
+    }
+
+    function ShowClass(classid){
+        location.href = `./Mainpage.php?link=ShowClass&num=2&CID=${classid}`;
     }
 </script>
 
